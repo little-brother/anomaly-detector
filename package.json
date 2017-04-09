@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "start": "node index"
+  },
+  "name": "animality-detection",
+  "version": "0.1.1",
+  "author": {
+    "email": "lb.im@ya.ru"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "outlier2": "^3.14.159265",
+    "regression": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/little-brother/anomality-detection.git"
+  },
+  "license": "GPL-2.0",
+  "homepage": "http://little-brother.ru"
+}
