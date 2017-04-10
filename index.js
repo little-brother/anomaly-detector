@@ -8,7 +8,7 @@ const port = process.argv.splice(process.execArgv.length + 2)[0] || 8000;
 function processQuery(query, callback) {
 	let series = query.series;
 
-	let s = series.map((e) => [(e[0] - series[0][0])/100000000000, e[1]])
+	let s = series.map((e) => [(e[0] - series[0][0])/100000000000, e[1]]);
 	let r = regression(query.options && query.options.regression || 'polynomial', s, query.options && query.options.degree || 3);
 	let delta = series.map((e, i) => Math.abs(e[1] - r.points[i][1]));
 
@@ -20,7 +20,7 @@ function processQuery(query, callback) {
 		source: series,
 		regression: r.points.map((e, i) => [series[i][0], e[1]]),	
 		outliers: outs.filter((e) => delta[e] > maxOk).map((e) => series[e])
-	})
+	});
 }
 
 http.createServer(function (req, res) {
@@ -39,4 +39,4 @@ http.createServer(function (req, res) {
     req.on('end', () => processQuery(JSON.parse(body), send));
 }).listen(port);
 
-console.log("Anomality detector running at http://127.0.0.1:" + port);
+console.log("Anomaly detector running at http://127.0.0.1:" + port);
