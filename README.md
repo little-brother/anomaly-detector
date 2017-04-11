@@ -2,13 +2,15 @@
 
 Simple http-server to detect anomality in time-series.
 
+
 # Usage
 
 * Install Node.js
 * Download and unpack this application
 * Install dependencies `npm i`
 * Run application `npm start`
-* Open `demo.html` in browser
+
+Open `demo.html` to see how application works.
 
 ```
 $.ajax({
@@ -16,8 +18,10 @@ $.ajax({
 	url: 'http://127.0.0.1:8000',
 	data: JSON.stringify({
 		options: {
+			// one of: linear, linearthroughorigin, exponential, logarithmic, power, polynomial
 			regression: 'polynomial',
 			degree: 5,
+			// one of: sigma, iqr, mad, md
 			outlier: 'md'	
 		},
 		// first element of each pair is unix timestamp	
